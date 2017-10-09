@@ -8,7 +8,7 @@ int do_cd(int argc, char** argv) {
     return -1;
 
   // TODO: Fill it!
-	chdir(argv + 1);
+	return chdir((*argv)[1]);
   return 0;
 }
 
@@ -31,7 +31,7 @@ int validate_cd_argv(int argc, char** argv) {
 	
 	while(dirp = readdir(dp))
 	{
-		if(!strcmp(dirp->d_name, argv + 1))
+		if(!strcmp(dirp->d_name, (*argv)[1]))
 			return 1;
 	}
   return 0;
@@ -41,7 +41,7 @@ int validate_pwd_argv(int argc, char** argv) {
   // TODO: Fill it!
 	for(int i = 0; i < argc; i++)
 	{
-		if(!strcmp(argv[i], "|"))
+		if(!strcmp((*argv)[i], '|'))
 			return 0;
 	}
   return 1;
